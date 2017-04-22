@@ -60,12 +60,12 @@
 		</section>
 		<div id="content-container">
 			<section class="content-pane" id="left-pane" style="display: inline-block;position: relative;top: 0px;left: 0px">
-				<h3>What is Benkyou-bud?</h3>
+				<h2>What is Benkyou-bud?</h2>
 				<p>
 					Benkyou-bud is a automated cloud software with some cool inbuilt features
 					like Course management, material sorting, date search and much more.
 				</p>
-				<h3>What makes it standout?</h3>
+				<h2>What makes it standout?</h2>
 				<p>
 					<h5>Its features of course</h5>
 					You can have your material sorted neat and tidy and with the on the fly search bar
