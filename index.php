@@ -24,7 +24,6 @@
 		#right-pane {
 			min-width: 30%;
 			max-width: 30%;
-			display: inline;
 		}
 		.content-container:after {
 			clear: left;
@@ -59,7 +58,7 @@
 			<img src="img/banner.jpg">
 		</section>
 		<div id="content-container">
-			<section class="content-pane" id="left-pane" style="display: inline-block;position: relative;top: 0px;left: 0px">
+			<aside class="content-pane" id="left-pane" style="float:left;position: relative;">
 				<h2>What is Benkyou-bud?</h2>
 				<p>
 					Benkyou-bud is a automated cloud software with some cool inbuilt features
@@ -71,12 +70,9 @@
 					You can have your material sorted neat and tidy and with the on the fly search bar
 					you can view your material at anytime(literally).<br>
 					With one click you can download all the material(in the sorted manner of course!).<br>
-
-
 				</p>
-
-			</section>
-			<section class="content-pane" id="right-pane" style="display: inline-block;">
+			</aside>
+			<aside class="content-pane" id="right-pane" style="float:right; position: relative;">
 				You may login from here:
 				<div class="form-pane">
 					<form action="processlogin.php" method="POST" id="login-form">
@@ -99,11 +95,10 @@
 						<input type="submit" value="I'm in!">
 					</form>
 					-->
-				</dib>
-			</section>
-			<div></div>
+				</div>
+			</aside>
 		</div>
-		<footer>
+		<footer style="clear:both;">
 			Designed by: <a href="#">Pardhu</a>
 			<div id="footer-icons">
 				<a href="#"><img src="img/github-mark.png" style="height: 50px;width: 50px;"></a>
