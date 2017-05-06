@@ -12,81 +12,19 @@ if(!isset($_SESSION['UserID']))
 <head>
 	<title>Benkyou-bud - Dashboard</title>
 	<style type="text/css">
-		/* Styling for the calendar */
-		ul {list-style-type: none;}
-		body {font-family: Verdana, sans-serif;}
-
-		/* Month header */
-		.month {
-		    padding: 2.5em 0px;
-		    width: 100%;
-		    background: #1abc9c;
-		    text-align: center;
+		/* Animations for the calendar alerts */
+		@keyframes alert{
+			85% {
+				font-size:20px;
+			}
 		}
 
-		/* Month list */
-		.month ul {
-		    margin: 0;
-		    padding: 0;
+		.days .alert {
+			animation-duration: 1.8s;
+			animation-iteration-count: infinite;
+			animation-name: alert;
+			position: relative;
 		}
-
-		.month ul li {
-		    color: white;
-		    font-size: 20px;
-		    text-transform: uppercase;
-		    letter-spacing: 3px;
-		}
-
-		/* Previous button inside month header */
-		.month .prev {
-		    float: left;
-		    padding-top: 10px;
-		}
-
-		/* Next button */
-		.month .next {
-		    float: right;
-		    padding-top: 10px;
-		}
-
-		/* Weekdays (Mon-Sun) */
-		.weekdays {
-		    margin: 0;
-		    padding: 10px 0;
-		    background-color:#ddd;
-		}
-
-		.weekdays li {
-		    display: inline-block;
-		    width: 13.6%;
-		    color: #666;
-		    text-align: center;
-		}
-
-		/* Days (1-31) */
-		.days {
-		    padding: 0px 0;
-		    background: #eee;
-		    margin: 0;
-		}
-
-		.days li {
-		    list-style-type: none;
-		    display: inline-block;
-		    width: 13.6%;
-		    text-align: center;
-		    margin-bottom: 5px;
-		    font-size:12px;
-		    color:#777;
-		}
-
-		/* Highlight the "current" day */
-		.days li .active {
-		    padding: 5px;
-		    background: #1abc9c;
-		    color: white !important
-		}
-		/* Ending the style for the calendar */
 	</style>
 </head>
 <body>
@@ -158,19 +96,7 @@ if(!isset($_SESSION['UserID']))
 		  <li>Su</li>
 		</ul>
 
-		<ul class="days"> 
-			<?php
-				for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, date("m"), date("Y"));$i++) {
-					echo "<li>";
-					if(date("m")===$i) {
-						echo "<span class='active'>".$i."</span>";
-					} else {
-						echo $i;
-					}
-					echo "</li>";
-				}
-			?>
-		</ul>
+		
 	</section>
 
 	<section id="recommendations">
