@@ -1,11 +1,3 @@
 <?php
-
-class Obj {
-	public $var1=99;
-	public $v1;
-
-	function exists()
-	{
-
-	}
-}
+$err = "DOne";
+header("Location: sb2.php");
