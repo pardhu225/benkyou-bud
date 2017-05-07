@@ -12,6 +12,9 @@ if(!isset($_SESSION['UserID']))
 <head>
 	<title>Benkyou-bud - Dashboard</title>
 	<style type="text/css">
+		body {
+			font-family: arial;
+		}
 		/* Animations for the calendar alerts */
 		@keyframes alert{
 			85% {
@@ -24,6 +27,35 @@ if(!isset($_SESSION['UserID']))
 			animation-iteration-count: infinite;
 			animation-name: alert;
 			position: relative;
+		}
+
+		nav {
+			position: fixed;
+			left:0;
+			top:0;
+			height: 2em;
+			background-color: #777;
+			width: 100%;
+			overflow: hidden;
+		}
+		nav ul {
+			list-style-type: none;
+			padding:0;
+			margin:0;
+		}
+		nav ul li {
+			text-transform: capitalize;
+			display: inline-block;
+			padding: 0.4em 0.7em;
+			cursor: pointer;
+		}
+		nav ul li:hover {
+			transition: 0.3s;
+			color: white;
+			background-color: #222;
+		}
+		#nav-clearance {
+			height:2em;
 		}
 	</style>
 </head>
@@ -39,6 +71,7 @@ if(!isset($_SESSION['UserID']))
 		Depending upon the nearest event show the most relevant subject
 
 	-->
+	<div id="nav-clearance">...</div>
 	<nav>
 		<ul>
 			<li>Go to courses</li>

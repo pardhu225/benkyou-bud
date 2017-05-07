@@ -57,6 +57,22 @@
 		<section id="welcome-banner">
 			<img src="img/banner.jpg">
 		</section>
+		<section id="err-box">
+			<?php 
+				if(isset($_GET['err']))
+				switch ($_GET['err']) {
+					case 5:
+						echo "You have successfully created an account. You may login now.";
+						break;
+					
+					case 1:
+						echo "Invalid username or mismatching passwords.";
+					default:
+						# code...
+						break;
+				}
+			?>
+		</section>
 		<div id="content-container">
 			<aside class="content-pane" id="left-pane" style="float:left;position: relative;">
 				<h2>What is Benkyou-bud?</h2>
@@ -80,21 +96,6 @@
 						<input type="password" id="password" name="password" placeholder="Password">
 						<input type="submit" value="Log in" id="login-button">
 					</form>
-					<!--
-					TODO Put this form else where
-					<form action="processsignup.php" method="POST" id="signup-form">
-						<input type="text" id="name" name="name" placeholder="Your Name">
-						<input type="text" id="username" name="name" placeholder="Your preffered Username">
-						<input type="password" id="password" name="password" placeholder="Your password">
-						<input type="repassword" id="repassword" name="repassword" placeholder="Your password again">
-						<input type="text" id="email" name="email">
-						<select name="institute" id="institute">
-							TODO complete this php code
-							<option></option>
-						</select>
-						<input type="submit" value="I'm in!">
-					</form>
-					-->
 				</div>
 			</aside>
 		</div>
