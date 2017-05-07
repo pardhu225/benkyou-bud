@@ -67,6 +67,8 @@
 					
 					case 1:
 						echo "Invalid username or mismatching passwords.";
+						break;
+						
 					default:
 						# code...
 						break;
