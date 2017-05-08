@@ -14,6 +14,9 @@ if(!isset($_SESSION['UserID']))
 	<style type="text/css">
 		body {
 			font-family: arial;
+			padding: 0;
+			margin:0;
+			height:100%;
 		}
 		/* Animations for the calendar alerts */
 		@keyframes alert{
@@ -34,7 +37,7 @@ if(!isset($_SESSION['UserID']))
 			left:0;
 			top:0;
 			height: 2em;
-			background-color: #777;
+			background-color: #999;
 			width: 100%;
 			overflow: hidden;
 		}
@@ -44,6 +47,7 @@ if(!isset($_SESSION['UserID']))
 			margin:0;
 		}
 		nav ul li {
+			letter-spacing: 0.2px;
 			text-transform: capitalize;
 			display: inline-block;
 			padding: 0.4em 0.7em;
@@ -56,6 +60,33 @@ if(!isset($_SESSION['UserID']))
 		}
 		#nav-clearance {
 			height:2em;
+		}
+		#left-pane {
+			float: left;
+			width: 60vw;
+			border: solid 1px lime;
+			padding:0;
+		}
+		#right-pane {
+			float: right;
+			border: solid 1px lime;
+			width: 38vw;
+			padding:0;
+		}
+		#tasks {
+			height: 60vh;
+		}
+		#recommendations {
+			height: 40vh;
+		}
+		#contents-pane {
+			clear:both;
+		}
+		#calendar {
+			height: 40vh;
+		}
+		#near-events {
+			height: 60vh;
 		}
 	</style>
 </head>
@@ -88,52 +119,25 @@ if(!isset($_SESSION['UserID']))
 		
 	</section>
 
-	<section id="near-events">
+	<section id="contents-pane">
+		<section id="left-pane">
+			<section id="tasks">
+				Tasks go here
+			</section>
+			<section id="recommendations">
+				
+			</section>
+		</section>
+
+		<section id="right-pane">
 		
-	</section>
-
-	<section id="calendar">
-		<div class="month"> 
-		  <ul>
-		    <li class="prev">&#10094;&#10094;</li>
-		    <li class="next">&#10095;&#10095;</li>
-		    <li>
-		        <?php 
-		        	switch (date("m")) {
-		        		case 1:echo "JANUARY";break;
-		        		case 2:echo "FEBRUARY";break;
-		        		case 3:echo "MARCH";break;
-		        		case 4:echo "APRIL";break;
-		        		case 5:echo "MAY";break;
-		        		case 6:echo "JUNE";break;
-		        		case 7:echo "JULY";break;
-		        		case 8:echo "AUGUST";break;
-		        		case 9:echo "SEPTEMBER";break;
-		        		case 10:echo "OCTOBER";break;
-		        		case 11:echo "NOVEMBER";break;
-		        		case 12:echo "DECEMBER";break;
-		        	}
-		        ?><br>
-		      <span style="font-size:18px"><?php echo date("Y");?></span>
-		    </li>
-		  </ul>
-		</div>
-
-		<ul class="weekdays">
-		  <li>Mon</li>
-		  <li>Tue</li>
-		  <li>Wed</li>
-		  <li>Thu</li>
-		  <li>Fri</li>
-		  <li>Sat</li>
-		  <li>Sun</li>
-		</ul>
-
-		
-	</section>
-
-	<section id="recommendations">
-		
+			<section id="calendar">
+				
+			</section>
+			<section id="near-events">
+				
+			</section>
+		</section>
 	</section>
 </body>
 </html>
