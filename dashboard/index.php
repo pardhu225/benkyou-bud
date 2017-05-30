@@ -16,22 +16,11 @@ if(!isset($_SESSION['UserID']))
 			font-family: arial;
 			padding: 0;
 			margin:0;
-			height:100%;
-		}
-		/* Animations for the calendar alerts */
-		@keyframes alert{
-			85% {
-				font-size:20px;
-			}
-		}
-
-		.days .alert {
-			animation-duration: 1.8s;
-			animation-iteration-count: infinite;
-			animation-name: alert;
-			position: relative;
-		}
-
+			aheight:100%;
+            aoverflow: hidden;
+        }
+        
+        /* style for the navigation bar */
 		nav {
 			position: fixed;
 			left:0;
@@ -61,32 +50,52 @@ if(!isset($_SESSION['UserID']))
 		#nav-clearance {
 			height:2em;
 		}
-		#left-pane {
-			float: left;
-			width: 60vw;
-			border: solid 1px lime;
-			padding:0;
+        
+        /* The styles for the parallax canvas */
+        #right-canvas {
+			position:absolute;
+			top:0;
+			right:0;
+			z-index: -1;
+            background-color: black;
 		}
-		#right-pane {
-			float: right;
-			border: solid 1px lime;
-			width: 38vw;
-			padding:0;
+		#left-canvas {
+			position: absolute;
+			top: 0;
+			left:0;
+			z-index:-1;
+            background-color: black;
 		}
-		#tasks {
-			height: 60vh;
-		}
-		#recommendations {
-			height: 40vh;
-		}
-		#contents-pane {
-			clear:both;
-		}
-		#calendar {
-			height: 40vh;
-		}
-		#near-events {
-			height: 60vh;
+        
+        #recommendations, #tasks, #calendar,
+        #nearest-events{
+            height: 100vh;
+            background-color: black;
+            text-align: center;
+            font-size: 2em;
+        }
+        
+        #recommendations {
+            color: red;
+        }
+        
+        #tasks {
+            color: mediumpurple;
+        }
+        
+        #calendar {
+            color: lime;
+        }
+        
+        #nearest-events {
+            color: blue;
+        }
+        #content-pane {
+			margin-left:20vw;
+			width:60vw;
+			margin-right: 20vw;
+            background-color: black;
+            
 		}
 	</style>
 </head>
@@ -114,30 +123,42 @@ if(!isset($_SESSION['UserID']))
 			<li>Some other menu item</li>
 		</ul>
 	</nav>
+    
+    <canvas width="500px" id="right-canvas"></canvas>
 
-	<section id="notification-bar">
+	<canvas width="500px" id="left-canvas"></canvas>
+	
+    <section id="notification-bar">
 		
 	</section>
-
-	<section id="contents-pane">
-		<section id="left-pane">
-			<section id="tasks">
-				Tasks go here
-			</section>
-			<section id="recommendations">
-				
-			</section>
-		</section>
-
-		<section id="right-pane">
-		
-			<section id="calendar">
-				
-			</section>
-			<section id="near-events">
-				
-			</section>
-		</section>
-	</section>
+    
+    <section id="pagenav">
+        
+    </section>
+    
+    <section id="buttons-pane">
+        <button id="calendarButton">Calendar</button>
+    </section>
+    <section id="content-pane">
+        <section id="recommendations">
+            Recommendations go here
+        </section>
+        <section id="calendar">
+            <br><br>
+            Calendar comes here
+        </section>
+        <section id="tasks">
+            <br><br>
+            Tasks go here
+        </section>
+        <section id="nearest-events">
+            <br><br>
+            Nearest events will bedisplayed here
+        </section>
+    </section>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="js/iparallax.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
 </body>
 </html>
