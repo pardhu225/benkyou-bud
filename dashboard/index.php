@@ -11,12 +11,16 @@ if(!isset($_SESSION['UserID']))
 <html>
 <head>
 	<title>Benkyou-bud - Dashboard</title>
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+          
 	<style type="text/css">
 		body {
 			font-family: arial;
 			padding: 0;
 			margin:0;
-			aheight:100%;
+			height:100%;
             aoverflow: hidden;
         }
         
@@ -75,29 +79,67 @@ if(!isset($_SESSION['UserID']))
             font-size: 2em;
         }
         
-        #recommendations {
+        #recommendations, #recommendationsButton {
             color: red;
         }
-        
-        #tasks {
-            color: mediumpurple;
+        #recommendationsButton:hover {
+            transition: 0.2s;
+            background-color:  rgba(128, 32, 0, 0.5);
         }
         
-        #calendar {
+        #tasks, #tasksButton {
+            color: mediumpurple;
+        }
+        #tasksButton:hover {
+            transition: 0.2s;
+            background-color: rgba(41, 20, 82,0.5)
+        }
+        
+        #calendar, #calendarButton {
             color: lime;
+        }
+        #calendarButton:hover {
+            transition: 0.2s;
+            background-color: rgba(0, 102, 0, 0.5);
         }
         
         #nearest-events {
+            color: blue;
+        }
+        #nearest-eventsButton {
             color: blue;
         }
         #content-pane {
 			margin-left:20vw;
 			width:60vw;
 			margin-right: 20vw;
-            background-color: black;
-            
+            background-color: black; 
 		}
+        #buttons-pane { 
+            position: fixed;
+            left:70vw;
+            top:20vh;
+            width:20vw;
+        }
+        #buttons-pane ul {
+            list-style-type: none;
+            color:white;
+            text-align: center;
+        }
+        #buttons-pane ul li {
+            width: 100% !important;
+            font-size: 1.3em;
+            cursor: pointer;
+            border-left: solid lime 1px ;
+            border-bottom: solid lime 1px;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            margin: 20px 0px;
+            overflow: hidden;
+            border-radius: 10px
+        }
 	</style>
+    
 </head>
 <body>
 	<!--
@@ -111,7 +153,6 @@ if(!isset($_SESSION['UserID']))
 		Depending upon the nearest event show the most relevant subject
 
 	-->
-	<div id="nav-clearance">...</div>
 	<nav>
 		<ul>
 			<li>Go to courses</li>
@@ -137,22 +178,29 @@ if(!isset($_SESSION['UserID']))
     </section>
     
     <section id="buttons-pane">
-        <button id="calendarButton">Calendar</button>
+        <ul>
+            <li id="recommendationsButton" class="waves-effect waves-light">Recommendations</li>
+            <li id="calendarButton" class="waves-effect waves-light">Calendar</li>
+            <li id="tasksButton" class="waves-effect waves-light">Tasks</li>
+            <li id="nearest-eventsButton" class="waves-effect waves-light">Nearest Events</li>
+        </ul>
     </section>
     <section id="content-pane">
+        
         <section id="recommendations">
+        	<div id="nav-clearance">...</div>
             Recommendations go here
         </section>
         <section id="calendar">
-            <br><br>
+            <div id="nav-clearance">...</div>
             Calendar comes here
         </section>
         <section id="tasks">
-            <br><br>
+            <div id="nav-clearance">...</div>
             Tasks go here
         </section>
         <section id="nearest-events">
-            <br><br>
+            <div id="nav-clearance">...</div>
             Nearest events will bedisplayed here
         </section>
     </section>
@@ -160,5 +208,8 @@ if(!isset($_SESSION['UserID']))
 	<script src="js/iparallax.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
+    
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </body>
 </html>
