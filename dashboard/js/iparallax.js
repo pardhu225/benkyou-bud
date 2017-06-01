@@ -31,7 +31,7 @@ var layer = function(param) {
 var llayers = [];
 var rlayers = [];
 var resetFlag = false;
-var REPETETIONS = 20;
+var REP = 20;
 var DELAY = 20;
 
 //Initiate all the squares at the starting itself: called when doc is ready
@@ -49,7 +49,7 @@ var startup = function() {
 	llayers.push(new layer({
 		height: left.height,
 		width: right.width,
-		num_squares: 55,
+		num_squares: 60,
 		max_side: 30,
 		min_side: 25,
 		max_gray: 220,
@@ -65,7 +65,7 @@ var startup = function() {
 	rlayers.push(new layer({
 		height: left.height,
 		width: right.width,
-		num_squares: 55,
+		num_squares: 60,
 		max_side: 30,
 		min_side: 25,
 		max_gray: 220,
@@ -126,7 +126,7 @@ var startup = function() {
 		parallax: 0.5,
         grad: function(){},
 		randomFunction: function() {
-			return Math.random()*Math.random();
+			return Math.random();
 		}
 	}));
 	rlayers.push(new layer({
@@ -142,7 +142,7 @@ var startup = function() {
 		parallax: 0.5,
         grad: function(){},
 		randomFunction: function() {
-			return 1-Math.random()*Math.random();
+			return 1-Math.random();
 		}
 	}));
 
@@ -160,7 +160,7 @@ var startup = function() {
 		parallax: 0.75,
         grad: function(){},
 		randomFunction: function() {
-			return Math.random()*Math.random();
+			return Math.random();
 		}
 	}));
 	rlayers.push(new layer({
@@ -176,7 +176,7 @@ var startup = function() {
 		parallax: 0.75,
         grad: function(){},
 		randomFunction: function() {
-			return 1-Math.random()*Math.random();
+			return 1-Math.random();
 		}
 	}));
 
@@ -187,7 +187,16 @@ var startup = function() {
 var drawLayer = function(l, context) {
     var scrollTop = $(window).scrollTop();
     for(var i=0;i<l.elem.length;i++) {
-        context.fillStyle = "rgba("+Math.round(l.elem[i].r)+","+Math.round(l.elem[i].g)+","+Math.round(l.elem[i].b)+","+l.elem[i].fo+")";
+        var r = Math.round(l.elem[i].r);
+        var g = Math.round(l.elem[i].g);
+        var b = Math.round(l.elem[i].b);
+        if(r>255)r=255;
+        if(r<0)r=0;
+        if(b>255)b=255;
+        if(b<0)b=0;
+        if(g>255)g=255;
+        if(g<0)g=0;
+        context.fillStyle = "rgba("+r+","+g+","+b+","+l.elem[i].fo+")";
         context.fillRect(l.elem[i].x, l.elem[i].y + l.parallax * scrollTop, l.elem[i].s, l.elem[i].s);
     }
 };
@@ -210,66 +219,66 @@ $(document).on("ready",startup);
 var drawSquares = function(color) {
     for(var i=0;i<llayers.length;i++) {
         for(var j=0;j<llayers[i].elem.length;j++) {
+            var l = llayers[i].elem[j];
+            var r = rlayers[i].elem[j];
             switch(color) {
                 case "red":
-                    llayers[i].elem[j].r_grad = (255 - llayers[i].elem[j].r)/REPETETIONS;
-                    rlayers[i].elem[j].r_grad = (255 - rlayers[i].elem[j].r)/REPETETIONS;
+                    l.r_grad = (255 - l.r)/REP;
+                    r.r_grad = (255 - r.r)/REP;
 
-                    llayers[i].elem[j].g_grad = (0 - llayers[i].elem[j].g)/REPETETIONS;
-                    rlayers[i].elem[j].g_grad = (0 - rlayers[i].elem[j].g)/REPETETIONS;
+                    l.g_grad = (0 - l.g)/REP;
+                    r.g_grad = (0 - r.g)/REP;
 
-                    llayers[i].elem[j].b_grad = (0 - llayers[i].elem[j].b)/REPETETIONS;
-                    rlayers[i].elem[j].b_grad = (0 - rlayers[i].elem[j].b)/REPETETIONS;
-
-
+                    l.b_grad = (0 - l.b)/REP;
+                    r.b_grad = (0 - r.b)/REP;
                     break;
                 case "lime":
-                    llayers[i].elem[j].g_grad = (255 - llayers[i].elem[j].r)/REPETETIONS;
-                    rlayers[i].elem[j].g_grad = (255 - rlayers[i].elem[j].r)/REPETETIONS;
+                    l.g_grad = (255 - l.r)/REP;
+                    r.g_grad = (255 - r.r)/REP;
 
-                    llayers[i].elem[j].r_grad = (0 - llayers[i].elem[j].g)/REPETETIONS;
-                    rlayers[i].elem[j].r_grad = (0 - rlayers[i].elem[j].g)/REPETETIONS;
+                    l.r_grad = (0 - l.g)/REP;
+                    r.r_grad = (0 - r.g)/REP;
 
-                    llayers[i].elem[j].b_grad = (0 - llayers[i].elem[j].b)/REPETETIONS;
-                    rlayers[i].elem[j].b_grad = (0 - rlayers[i].elem[j].b)/REPETETIONS;
+                    l.b_grad = (0 - l.b)/REP;
+                    r.b_grad = (0 - r.b)/REP;
                     break;
                 case "mediumpurple":
-                    llayers[i].elem[j].r_grad = (147 - llayers[i].elem[j].r)/REPETETIONS;
-                    rlayers[i].elem[j].r_grad = (147 - rlayers[i].elem[j].r)/REPETETIONS;
+                    l.r_grad = (147 - l.r)/REP;
+                    r.r_grad = (147 - r.r)/REP;
 
-                    llayers[i].elem[j].g_grad = (112 - llayers[i].elem[j].g)/REPETETIONS;
-                    rlayers[i].elem[j].g_grad = (112 - rlayers[i].elem[j].g)/REPETETIONS;
+                    l.g_grad = (112 - l.g)/REP;
+                    r.g_grad = (112 - r.g)/REP;
 
-                    llayers[i].elem[j].b_grad = (219 - llayers[i].elem[j].b)/REPETETIONS;
-                    rlayers[i].elem[j].b_grad = (219 - rlayers[i].elem[j].b)/REPETETIONS;
+                    l.b_grad = (219 - l.b)/REP;
+                    r.b_grad = (219 - r.b)/REP;
                     break;
                 case "blue":
-                    llayers[i].elem[j].b_grad = (255 - llayers[i].elem[j].r)/REPETETIONS;
-                    rlayers[i].elem[j].b_grad = (255 - rlayers[i].elem[j].r)/REPETETIONS;
+                    l.b_grad = (255 - l.r)/REP;
+                    r.b_grad = (255 - r.r)/REP;
 
-                    llayers[i].elem[j].g_grad = (0 - llayers[i].elem[j].g)/REPETETIONS;
-                    rlayers[i].elem[j].g_grad = (0 - rlayers[i].elem[j].g)/REPETETIONS;
+                    l.g_grad = (0 - l.g)/REP;
+                    r.g_grad = (0 - r.g)/REP;
 
-                    llayers[i].elem[j].r_grad = (0 - llayers[i].elem[j].b)/REPETETIONS;
-                    rlayers[i].elem[j].r_grad = (0 - rlayers[i].elem[j].b)/REPETETIONS;
+                    l.r_grad = (0 - l.b)/REP;
+                    r.r_grad = (0 - r.b)/REP;
                     break;
                 case "original":
                     resetFlag = true;
-                    llayers[i].elem[j].r_grad = (llayers[i].elem[j].c - llayers[i].elem[j].r)/REPETETIONS;
-                    rlayers[i].elem[j].r_grad = (rlayers[i].elem[j].c - rlayers[i].elem[j].r)/REPETETIONS;
+                    l.r_grad = (l.c - l.r)/REP;
+                    r.r_grad = (r.c - r.r)/REP;
 
-                    llayers[i].elem[j].g_grad = (llayers[i].elem[j].c - llayers[i].elem[j].g)/REPETETIONS;
-                    rlayers[i].elem[j].g_grad = (rlayers[i].elem[j].c - rlayers[i].elem[j].g)/REPETETIONS;
+                    l.g_grad = (l.c - l.g)/REP;
+                    r.g_grad = (r.c - r.g)/REP;
 
-                    llayers[i].elem[j].b_grad = (llayers[i].elem[j].c - llayers[i].elem[j].b)/REPETETIONS;
-                    rlayers[i].elem[j].b_grad = (rlayers[i].elem[j].c - rlayers[i].elem[j].b)/REPETETIONS;
+                    l.b_grad = (l.c - l.b)/REP;
+                    r.b_grad = (r.c - r.b)/REP;
 
-                    llayers[i].elem[j].o_grad = (llayers[i].elem[j].o - llayers[i].elem[j].fo)/REPETETIONS;
-                    rlayers[i].elem[j].o_grad = (rlayers[i].elem[j].o - rlayers[i].elem[j].fo)/REPETETIONS;
+                    l.o_grad = (l.o - l.fo)/REP;
+                    r.o_grad = (r.o - r.fo)/REP;
             }
             if(color!== "original") {
-                llayers[i].elem[j].o_grad = (Math.random()*(1-.6) +.6 - llayers[i].elem[j].fo)/REPETETIONS;
-                rlayers[i].elem[j].o_grad = (Math.random()*(1-.6) +.6 - rlayers[i].elem[j].fo)/REPETETIONS;
+                l.o_grad = (Math.random()*(1-.6) +.6 - l.fo)/REP;
+                r.o_grad = (Math.random()*(1-.6) +.6 - r.fo)/REP;
             }
         }
     }
@@ -279,45 +288,49 @@ var drawSquares = function(color) {
             if(!resetFlag) {
                 for(var i=0;i<llayers.length;i++) {
                     for(var j=0;j<llayers[i].elem.length;j++) {
-                         {
-                            llayers[i].elem[j].r += llayers[i].elem[j].r_grad;
-                            rlayers[i].elem[j].r += llayers[i].elem[j].r_grad;
+                    {
+                            var l = llayers[i].elem[j];
+                            var r = rlayers[i].elem[j];
+                            l.r += l.r_grad;
+                            r.r += l.r_grad;
 
-                            llayers[i].elem[j].g += llayers[i].elem[j].g_grad;
-                            rlayers[i].elem[j].g += rlayers[i].elem[j].g_grad;
+                            l.g += l.g_grad;
+                            r.g += r.g_grad;
 
-                            llayers[i].elem[j].b += llayers[i].elem[j].b_grad;
-                            rlayers[i].elem[j].b += rlayers[i].elem[j].b_grad;
+                            l.b += l.b_grad;
+                            r.b += r.b_grad;
 
-                            llayers[i].elem[j].fo += llayers[i].elem[j].o_grad;
-                            rlayers[i].elem[j].fo += rlayers[i].elem[j].o_grad;
+                            l.fo += l.o_grad;
+                            r.fo += r.o_grad;
                         }
                     }
                 }
                 drawCanvas();
             }
-        }, DELAY, REPETETIONS);
+        }, DELAY, REP);
     else
         setIntervalX(function(){
             for(var i=0;i<llayers.length;i++) {
                 for(var j=0;j<llayers[i].elem.length;j++) {
                      {
-                        llayers[i].elem[j].r += llayers[i].elem[j].r_grad;
-                        rlayers[i].elem[j].r += llayers[i].elem[j].r_grad;
+                        var l = llayers[i].elem[j];
+                        var r = rlayers[i].elem[j];
+                        l.r += l.r_grad;
+                        r.r += l.r_grad;
 
-                        llayers[i].elem[j].g += llayers[i].elem[j].g_grad;
-                        rlayers[i].elem[j].g += rlayers[i].elem[j].g_grad;
+                        l.g += l.g_grad;
+                        r.g += r.g_grad;
 
-                        llayers[i].elem[j].b += llayers[i].elem[j].b_grad;
-                        rlayers[i].elem[j].b += rlayers[i].elem[j].b_grad;
+                        l.b += l.b_grad;
+                        r.b += r.b_grad;
 
-                        llayers[i].elem[j].fo += llayers[i].elem[j].o_grad;
-                        rlayers[i].elem[j].fo += rlayers[i].elem[j].o_grad;
+                        l.fo += l.o_grad;
+                        r.fo += r.o_grad;
                     }
                 }
             }
             drawCanvas();
-        }, DELAY, REPETETIONS, function(){resetFlag=false;});
+        }, DELAY, REP, function(){resetFlag=false;});
 };
 
 function resetSquares() {
@@ -353,6 +366,7 @@ $("#calendarButton").click(function(){
     
 });
 $("#calendarButton").mouseenter(function(){
+    console.log("Mouse entered calendarButton");
     drawSquares("lime");
 });
 
@@ -362,7 +376,8 @@ $("#recommendationsButton").click(function(){
     $('html, body').animate({"scrollTop": $("#recommendations").offset().top},1000);
 });
 $("#recommendationsButton").mouseenter(function(){
-    drawSquares('red');
+    console.log("Mouse entered recommendationsButton");
+    drawSquares("red");
 });
 
 $("#tasksButton").click(function(){
@@ -371,6 +386,7 @@ $("#tasksButton").click(function(){
     $('html, body').animate({"scrollTop": $("#tasks").offset().top},1000);
 });
 $("#tasksButton").mouseenter(function(){
+    console.log("Mouse entered tasksButton");
     drawSquares("mediumpurple");
 });
 
@@ -380,5 +396,6 @@ $("#nearest-eventsButton").click(function(){
     $('html, body').animate({"scrollTop": $("#nearest-events").offset().top},1000);
 });
 $("#nearest-eventsButton").mouseenter(function(){
+    console.log("Mouse entered nearest events button");
     drawSquares("blue");
 });

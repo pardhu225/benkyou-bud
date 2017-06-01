@@ -83,7 +83,6 @@ if(!isset($_SESSION['UserID']))
             color: red;
         }
         #recommendationsButton:hover {
-            transition: 0.2s;
             background-color:  rgba(128, 32, 0, 0.5);
         }
         
@@ -185,10 +184,10 @@ if(!isset($_SESSION['UserID']))
     
     <section id="buttons-pane">
         <ul>
-            <li id="recommendationsButton" class="waves-effect waves-light"><span class="fa fa-thumbs-up" style="color:red"></span>Recommendations</li>
             <li id="nearest-eventsButton" class="waves-effect waves-light"><span class="fa fa-exclamation-circle"></span>Nearest Events</li>
             <li id="calendarButton" class="waves-effect waves-light"><span class="fa fa-calendar" style="float: left"></span>Calendar</li>
             <li id="tasksButton" class="waves-effect waves-light"><span class="fa fa-tasks"></span>Tasks</li>
+            <li id="recommendationsButton" class="waves-effect waves-light"><span class="fa fa-thumbs-up" style="color:red"></span>Recommendations</li>
         </ul>
     </section>
     <section id="content-pane">
