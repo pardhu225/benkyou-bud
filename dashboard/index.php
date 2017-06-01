@@ -12,8 +12,8 @@ if(!isset($_SESSION['UserID']))
 <head>
 	<title>Benkyou-bud - Dashboard</title>
     <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
           
 	<style type="text/css">
 		body {
@@ -103,11 +103,11 @@ if(!isset($_SESSION['UserID']))
             background-color: rgba(0, 102, 0, 0.5);
         }
         
-        #nearest-events {
+        #nearest-events,#nearest-eventsButton {
             color: blue;
         }
-        #nearest-eventsButton {
-            color: blue;
+        #nearest-eventsButton:hover {
+            background-color: rgba(0, 0, 128,0.5);
         }
         #content-pane {
 			margin-left:20vw;
@@ -130,13 +130,19 @@ if(!isset($_SESSION['UserID']))
             width: 100% !important;
             font-size: 1.3em;
             cursor: pointer;
-            border-left: solid lime 1px ;
-            border-bottom: solid lime 1px;
             padding-top: 1em;
             padding-bottom: 1em;
             margin: 20px 0px;
             overflow: hidden;
-            border-radius: 10px
+            border-radius: 25px;
+        }
+        #buttons-pane ul li span {
+            float: left;
+            padding:1.2em;
+            padding-left: 1.4em;
+            position: absolute;
+            left:0;
+            top:0;
         }
 	</style>
     
@@ -179,10 +185,10 @@ if(!isset($_SESSION['UserID']))
     
     <section id="buttons-pane">
         <ul>
-            <li id="recommendationsButton" class="waves-effect waves-light">Recommendations</li>
-            <li id="calendarButton" class="waves-effect waves-light">Calendar</li>
-            <li id="tasksButton" class="waves-effect waves-light">Tasks</li>
-            <li id="nearest-eventsButton" class="waves-effect waves-light">Nearest Events</li>
+            <li id="recommendationsButton" class="waves-effect waves-light"><span class="fa fa-thumbs-up" style="color:red"></span>Recommendations</li>
+            <li id="nearest-eventsButton" class="waves-effect waves-light"><span class="fa fa-exclamation-circle"></span>Nearest Events</li>
+            <li id="calendarButton" class="waves-effect waves-light"><span class="fa fa-calendar" style="float: left"></span>Calendar</li>
+            <li id="tasksButton" class="waves-effect waves-light"><span class="fa fa-tasks"></span>Tasks</li>
         </ul>
     </section>
     <section id="content-pane">
@@ -206,8 +212,8 @@ if(!isset($_SESSION['UserID']))
     </section>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script src="js/iparallax.js"></script>
-    <script src="js/navigation.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
+    
     
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>

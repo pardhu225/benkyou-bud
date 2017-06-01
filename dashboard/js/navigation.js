@@ -1,22 +1,48 @@
+var drawSquares = function(color) {
+    switch(color)
+    {
+        case "red":
+            var lc = document.getElementById("left-canvas").getContext("2d");
+            var rc = document.getElementById("right-canvas").getContext("2d");
+            for(var i=0;i<llayers.length;i++) {
+                for(var j=0;j<llayers[i].elem.length;j++) {
+                    setIntervalX(function(){
+                        llayers[i].elem[j].r++;
+                    },20,255-llayers[i].elem[j].c);
+                }
+            }
+    }
+};
+
+function setIntervalX(callback, delay, repetitions) {
+    var x = 0;
+    var intervalID = window.setInterval(function () {
+
+       callback();
+
+       if (++x === repetitions) {
+           window.clearInterval(intervalID);
+       }
+    }, delay);
+}
+
+// Reset the squares only when mouse leaves the button-pane
+$("#button-pane").mouseleave(function(){
+    resetSquares();
+});
+
+// Attach event handler for each buttons
 $("#calendarButton").click(function(){
     var offset = $("#calendar").offset().top;
     var st = $('html, body').attr('scrollTop');
-    if(!(offset<st+20 && offset>st-20))
+    if((offset<st+20 && offset>st-20)) {
         $('html, body').animate({
             "scrollTop": offset
         },1000);
+    }
 });
-$("#calendarButton").mouseover(function(){
-    $(this).animate({
-        "border-radius": "20px",
-        "background-color": "rgba(0, 102, 0, 1)"
-    },100);
-});
-$("#calendarButton").mouseleave(function(){
-    $(this).animate({
-        "border-radius": "10px",
-        "background-color": "#000"
-    },500);
+$("#calendarButton").mouseenter(function(){
+    drawSquares("lime");
 });
 
 
@@ -29,19 +55,8 @@ $("#recommendationsButton").click(function(){
         },1000);
 });
 $("#recommendationsButton").mouseover(function(){
-    $(this).animate({
-        "border-radius": "20px",
-        "background-color": "rgb(128, 32, 0, 0)"
-    },100);
+    drawSquares('red');
 });
-$("#recommendationsButton").mouseleave(function(){
-    $(this).animate({
-        "border-radius": "10px",
-        "background-color": "#000"
-    },500);
-});
-
-
 
 $("#tasksButton").click(function(){
     var offset = $("#calendar").offset().top;
@@ -52,19 +67,8 @@ $("#tasksButton").click(function(){
         },1000);
 });
 $("#tasksButton").mouseover(function(){
-    $(this).animate({
-        "border-radius": "20px",
-        "background-color": "rgba(128, 32, 0, 0.5)"
-    },100);
+    drawSquares("mediumpurple");
 });
-$("#tasksButton").mouseleave(function(){
-    $(this).animate({
-        "border-radius": "10px",
-        "background-color": "#000"
-    },500);
-});
-
-
 
 $("#nearest-eventsButton").click(function(){
     var offset = $("#calendar").offset().top;
@@ -75,14 +79,5 @@ $("#nearest-eventsButton").click(function(){
         },1000);
 });
 $("#nearest-eventsButton").mouseover(function(){
-    $(this).animate({
-        "border-radius": "20px",
-        "background-color": "rgba(128, 32, 0, 0.5)"
-    },100);
-});
-$("#nearest-eventsButton").mouseleave(function(){
-    $(this).animate({
-        "border-radius": "10px",
-        "background-color": "#000"
-    },500);
+    drawSquares("blue");
 });
