@@ -2,24 +2,50 @@
 <html>
 <head>
 	<title>Benkyou-bud - Dashboard</title>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
     <style>
+        html,body {padding:0;margin:0;
+            font-family: "arial", sans-serif;}
         #left-pane {
-            display:inline-block;
             width: 40vw;
             float: left;
         }
         #right-pane {
-            display: ;
-            width: 50vw;
-            float: left;
+            width: 55vw;
+            float: right;
         }
-        #rec {
-            height: 60vh;
-            background-color: aliceblue;
+        #rec, #cal, #tas, #ev {
+            transition: 0.1s;
+            box-shadow:0px 5px 15px #aaa;
         }
-        #cal {height: 40vh;background-color: azure;}
-        #tas {height: 40vh; background-color: cornsilk}
-        #ev {height: 60vh; background-color:darkcyan}
+        #rec:hover, #cal:hover, #tas:hover, #ev:hover {
+            transition: 0.1s;
+            box-shadow:0px 10px 50px #aaa;
+        }
+        #control-panel-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #control-panel-list li {
+            height: 100px;
+            width: 100px;
+            display: inline-table;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 500;
+            color: white;
+            padding: 0px 10px;
+        }
+        #control-panel-list li:hover{
+            color:bisque;
+        }
+        #control-panel-list li i {
+            font-size: 5em;
+        }
+        #rec {margin-right: 0px; margin-bottom: 10px; height: 58vh; padding: 10px; background-color: aliceblue; display: block}
+        #cal {margin-right: 0px; margin-bottom: 0px; height: 35vh; padding: 10px; background-color: azure;}
+        #tas {margin-right: 0px; margin-bottom: 10px; height: 35vh; padding: 10px; background-color: cornsilk;}
+        #ev  {margin-right: 0px; margin-bottom: 0px; height: 58vh; padding: 10px; background-color: darkcyan;}
     </style>
 </head>
 <body>
@@ -56,7 +82,15 @@
                 Tasks go here
             </div>
             <div id="ev">
-                Nearest events will bedisplayed here
+                Control Panel
+                <div>
+                    <ul id="control-panel-list">
+                        <li><i class="fa fa-book"></i><br><br><u>C</u>ourses</li>
+                        <li><i class="fa fa-file"></i><br><br><u>F</u>ile Dropper</li>
+                        <li><i class="fa fa-area-chart"></i><br><br><u>S</u>tatistics</li>
+                        <li><i class="fa fa-power-off"></i><br><br>Log out</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
