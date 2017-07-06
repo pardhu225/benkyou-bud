@@ -54,95 +54,6 @@ if(!isset($_SESSION['UserID']))
 		#nav-clearance {
 			height:2em;
 		}
-        
-        /* The styles for the parallax canvas */
-        #right-canvas {
-			position:absolute;
-			top:0;
-			right:0;
-			z-index: -1;
-            background-color: black;
-		}
-		#left-canvas {
-			position: absolute;
-			top: 0;
-			left:0;
-			z-index:-1;
-            background-color: black;
-		}
-        
-        #recommendations, #tasks, #calendar,
-        #nearest-events{
-            height: 100vh;
-            background-color: black;
-            text-align: center;
-            font-size: 2em;
-        }
-        
-        #recommendations, #recommendationsButton {
-            color: red;
-        }
-        #recommendationsButton:hover {
-            background-color:  rgba(128, 32, 0, 0.5);
-        }
-        
-        #tasks, #tasksButton {
-            color: mediumpurple;
-        }
-        #tasksButton:hover {
-            transition: 0.2s;
-            background-color: rgba(41, 20, 82,0.5)
-        }
-        
-        #calendar, #calendarButton {
-            color: lime;
-        }
-        #calendarButton:hover {
-            transition: 0.2s;
-            background-color: rgba(0, 102, 0, 0.5);
-        }
-        
-        #nearest-events,#nearest-eventsButton {
-            color: blue;
-        }
-        #nearest-eventsButton:hover {
-            background-color: rgba(0, 0, 128,0.5);
-        }
-        #content-pane {
-			margin-left:20vw;
-			width:60vw;
-			margin-right: 20vw;
-            background-color: black; 
-		}
-        #buttons-pane { 
-            position: fixed;
-            left:70vw;
-            top:20vh;
-            width:20vw;
-        }
-        #buttons-pane ul {
-            list-style-type: none;
-            color:white;
-            text-align: center;
-        }
-        #buttons-pane ul li {
-            width: 100% !important;
-            font-size: 1.3em;
-            cursor: pointer;
-            padding-top: 1em;
-            padding-bottom: 1em;
-            margin: 20px 0px;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-        #buttons-pane ul li span {
-            float: left;
-            padding:1.2em;
-            padding-left: 1.4em;
-            position: absolute;
-            left:0;
-            top:0;
-        }
 	</style>
     
 </head>
@@ -169,10 +80,6 @@ if(!isset($_SESSION['UserID']))
 			<li>Some other menu item</li>
 		</ul>
 	</nav>
-    
-    <canvas width="500px" id="right-canvas"></canvas>
-
-	<canvas width="500px" id="left-canvas"></canvas>
 	
     <section id="notification-bar">
 		
@@ -185,9 +92,9 @@ if(!isset($_SESSION['UserID']))
     <section id="buttons-pane">
         <ul>
             <li id="nearest-eventsButton" class="waves-effect waves-light"><span class="fa fa-exclamation-circle"></span>Nearest Events</li>
-            <li id="calendarButton" class="waves-effect waves-light"><span class="fa fa-calendar" style="float: left"></span>Calendar</li>
+            <li id="calendarButton" class="waves-effect waves-light"><span class="fa fa-calendar"></span>Calendar</li>
             <li id="tasksButton" class="waves-effect waves-light"><span class="fa fa-tasks"></span>Tasks</li>
-            <li id="recommendationsButton" class="waves-effect waves-light"><span class="fa fa-thumbs-up" style="color:red"></span>Recommendations</li>
+            <li id="recommendationsButton" class="waves-effect waves-light"><span class="fa fa-thumbs-up"></span>Recommendations</li>
         </ul>
     </section>
     <section id="content-pane">

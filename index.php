@@ -7,7 +7,6 @@
 			padding-left: 15%;
 			padding-right: 15%;
 			box-shadow: 5px 5px black 3px;
-
 		}
 		.content-pane {
 			padding:0	em;
