@@ -1,0 +1,48 @@
+<html>
+<body>
+    <table>
+        <tbody id="bahu"></tbody>
+    </table>
+<script>
+    
+    var getWeek = function(day) {
+        switch(day)
+        {
+        case 0: return "Sun";
+        case 1: return "mon";
+        case 2: return "tue";
+        case 3: return "wed";
+        case 4: return "thu";
+        case 5: return "fri";
+        case 6: return 'sat';
+        }
+    };
+    var getMonthArray = function(m){
+        var d = new Date();
+        var months = [31,(d.getFullYear()%4===0)?29:28,31,30,31,30,31,31,30,31,30,31];
+        d = new Date(d.getFullYear(),((typeof m) ==="undefined")?d.getMonth():m,1,0,0,0,0);
+        var arr = [];
+        var w = d.getDay();
+        for(var i=0;i<d.getDay();i++)
+            arr.push(-1);
+        for(var i=0;i<months[d.getMonth()];i++)
+            arr.push(i+1);
+        while(arr.length%7!==0)
+            arr.push(-1);
+        return arr;
+    };
+    var arr = getMonthArray();
+    var str = "";
+    str = "<tr>";
+    for(var i=1;i<=arr.length;i++) {
+        str+=("<td>"+arr[i-1]+"</td>");
+        if(i%7===0) {
+            console.log(i+" value");
+            str+="</tr><tr>";
+        }
+    }
+    str+="</tr>";
+    document.getElementById("bahu").innerHTML=str;
+</script>
+</body>
+</html>
