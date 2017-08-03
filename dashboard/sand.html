@@ -2,8 +2,18 @@
 <body>
     <table>
         <tbody id="bahu"></tbody>
+        <style type="text/css" src="css/dropzone.css"></style>
     </table>
+    <form class="dropzone" action="sand.html" method="post" id="form1">
+        <input type="text">
+    </form>
+    <script src="js/dropzone.js"/>
 <script>
+    Dropzone.options.form1 = {
+      init: function() {
+        this.on("addedfile", function(file) { alert("Added file."); });
+      }
+    };
     
     var getWeek = function(day) {
         switch(day)

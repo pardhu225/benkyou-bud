@@ -68,6 +68,18 @@
             width: 100%;
             height: 100%;
         }
+        #file-dropper {
+            display: none;
+            position: absolute;
+            left:20%;
+            right:20%;
+            top:20%;
+            bottom: 20%;
+        }
+        #file-dropper iframe {
+            width:100%;
+            height:100%;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +130,7 @@
             </div>
         </div>
     </section>
+    <div id="file-dropper"></div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script>
         var getWeek = function(day) {
@@ -158,6 +171,7 @@
         }
         str+="</tr>";
         document.getElementById("calendar-table").innerHTML=str;
+        $("#file-dropper").html("<iframe src='sand.html'></iframe>");
     </script>
 
 </body>
